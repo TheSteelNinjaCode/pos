@@ -15,5 +15,9 @@
   "prisma": true,
   "docker": false,
   "version": "3.6.2",
-  "excludeFiles": []
+  "excludeFiles": [
+    "/src/app/layout.php",
+    "/src/app/css/tailwind.css",
+    "/src/app/index.php"
+  ]
 }
