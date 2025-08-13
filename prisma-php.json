@@ -1,0 +1,19 @@
+{
+  "projectName": "pos",
+  "projectRootPath": "C:\\xampp\\htdocs\\projects\\package-creations\\create-prisma-php-app-dev\\create-prisma-php-app-test\\pos",
+  "phpEnvironment": "XAMPP",
+  "phpRootPathExe": "C:\\xampp\\php\\php.exe",
+  "bsTarget": "http://localhost/projects/package-creations/create-prisma-php-app-dev/create-prisma-php-app-test/pos/",
+  "bsPathRewrite": {
+    "^/": "/projects/package-creations/create-prisma-php-app-dev/create-prisma-php-app-test/pos/"
+  },
+  "backendOnly": false,
+  "swaggerDocs": false,
+  "tailwindcss": true,
+  "websocket": false,
+  "mcp": false,
+  "prisma": true,
+  "docker": false,
+  "version": "3.6.2",
+  "excludeFiles": []
+}

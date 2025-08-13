@@ -1,0 +1,103 @@
+{
+  "datamodel": {
+    "enums": [],
+    "models": []
+  },
+  "schema": {
+    "inputObjectTypes": {},
+    "outputObjectTypes": {
+      "prisma": [
+        {
+          "name": "Query",
+          "fields": []
+        },
+        {
+          "name": "Mutation",
+          "fields": [
+            {
+              "name": "executeRaw",
+              "args": [
+                {
+                  "name": "query",
+                  "isRequired": true,
+                  "isNullable": false,
+                  "inputTypes": [
+                    {
+                      "type": "String",
+                      "location": "scalar",
+                      "isList": false
+                    }
+                  ]
+                },
+                {
+                  "name": "parameters",
+                  "isRequired": false,
+                  "isNullable": false,
+                  "inputTypes": [
+                    {
+                      "type": "Json",
+                      "location": "scalar",
+                      "isList": false
+                    }
+                  ]
+                }
+              ],
+              "isNullable": false,
+              "outputType": {
+                "type": "Json",
+                "location": "scalar",
+                "isList": false
+              }
+            },
+            {
+              "name": "queryRaw",
+              "args": [
+                {
+                  "name": "query",
+                  "isRequired": true,
+                  "isNullable": false,
+                  "inputTypes": [
+                    {
+                      "type": "String",
+                      "location": "scalar",
+                      "isList": false
+                    }
+                  ]
+                },
+                {
+                  "name": "parameters",
+                  "isRequired": false,
+                  "isNullable": false,
+                  "inputTypes": [
+                    {
+                      "type": "Json",
+                      "location": "scalar",
+                      "isList": false
+                    }
+                  ]
+                }
+              ],
+              "isNullable": false,
+              "outputType": {
+                "type": "Json",
+                "location": "scalar",
+                "isList": false
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "enumTypes": {}
+  },
+  "mappings": {
+    "modelOperations": [],
+    "otherOperations": {
+      "read": [],
+      "write": [
+        "executeRaw",
+        "queryRaw"
+      ]
+    }
+  }
+}

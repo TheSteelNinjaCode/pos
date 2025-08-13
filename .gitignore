@@ -1,0 +1,35 @@
+# Node modules
+node_modules/
+
+# PHP Composer dependencies
+vendor/
+
+# Environment files
+# .env
+.env.*
+
+# PHP-specific files
+.phpunit.result.cache
+
+# IDE-specific files
+.vscode/
+.idea/
+
+# OS-specific files
+.DS_Store # macOS
+Thumbs.db # Windows
+
+# Log files
+*.log
+
+# Dependency directories
+composer.lock
+
+# Backup and temporary files
+*.swp
+
+# Prisma PHP settings files
+.pphp/
+caches/
+settings/bs-config.json
+/src/generated/prisma

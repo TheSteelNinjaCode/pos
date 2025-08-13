@@ -1,0 +1,16 @@
+[
+  "./src/app/assets/images/file.svg",
+  "./src/app/assets/images/globe.svg",
+  "./src/app/assets/images/prisma-php.svg",
+  "./src/app/assets/images/window.svg",
+  "./src/app/css/styles.css",
+  "./src/app/css/tailwind.css",
+  "./src/app/error.php",
+  "./src/app/favicon.ico",
+  "./src/app/index.php",
+  "./src/app/js/index.js",
+  "./src/app/js/json5.min.js",
+  "./src/app/js/morphdom-umd.min.js",
+  "./src/app/layout.php",
+  "./src/app/not-found.php"
+]

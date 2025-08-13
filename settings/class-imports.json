@@ -1,0 +1,9 @@
+{
+  "PHPX": [
+    {
+      "className": "Lib\\PHPX\\PHPX",
+      "filePath": "Lib\\PHPX\\PHPX.php",
+      "importer": "C:\\xampp\\htdocs\\projects\\package-creations\\create-prisma-php-app-dev\\create-prisma-php-app-test\\pos\\src\\Lib\\PHPX\\Fragment.php"
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+# Turn on rewrite engine
+RewriteEngine On
+
+# ------------------------------------------------------------------------------
+# Block sensitive files (Apache 2.2 + 2.4 compatible)
+# ------------------------------------------------------------------------------
+<FilesMatch "(^\.htaccess|\.git|\.env|composer\.(json|lock)|package(-lock)?\.json|phpunit\.xml)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+# ------------------------------------------------------------------------------
+# CORS: handled in PHP via Lib\Middleware\CorsMiddleware
+# (Remove any Apache-level Access-Control-* headers to avoid conflicts)
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+# Content-Type with charset UTF-8 for HTML, CSS, and JS files
+# ------------------------------------------------------------------------------
+<IfModule mod_headers.c>
+  # HTML
+  <FilesMatch "\.(html|htm)$">
+    Header set Content-Type "text/html; charset=UTF-8"
+  </FilesMatch>
+  # CSS
+  <FilesMatch "\.(css)$">
+    Header set Content-Type "text/css; charset=UTF-8"
+  </FilesMatch>
+  # JS
+  <FilesMatch "\.(js)$">
+    Header set Content-Type "application/javascript; charset=UTF-8"
+  </FilesMatch>
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# Content Security Policy
+# ------------------------------------------------------------------------------
+<IfModule mod_headers.c>
+  Header set Content-Security-Policy "\
+    default-src 'self' https:; \
+    script-src  'self' https: 'unsafe-inline' 'unsafe-eval' blob:; \
+    style-src   'self' https: 'unsafe-inline'; \
+    img-src     'self' data: https:; \
+    connect-src 'self' ws: wss:; \
+    form-action 'self'; \
+    object-src  'none';"
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# Security headers
+# ------------------------------------------------------------------------------
+<IfModule mod_headers.c>
+  # HSTS (only meaningful over HTTPS)
+  Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
+  # XSS Protection (legacy but harmless)
+  Header set X-XSS-Protection "1; mode=block"
+
+  # Prevent MIME-type sniffing
+  Header set X-Content-Type-Options "nosniff"
+
+  # Clickjacking protection
+  Header always set X-Frame-Options "DENY"
+
+  # Referrer Policy
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Permissions Policy (tune as needed)
+  Header set Permissions-Policy "geolocation=(), microphone=(), camera=(), autoplay=()"
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# Preflight: route all OPTIONS to bootstrap so CorsMiddleware can reply 204
+# ------------------------------------------------------------------------------
+RewriteCond %{REQUEST_METHOD} =OPTIONS
+RewriteRule ^ bootstrap.php [QSA,L]
+
+# ------------------------------------------------------------------------------
+# Front controller: exclude static files, everything else -> bootstrap.php
+# ------------------------------------------------------------------------------
+RewriteCond %{REQUEST_URI} !\.(css|js|png|jpe?g|gif|svg|webp|woff2?|ttf|eot|ico|pdf|mp4|webm|mp3|ogg)$ [NC]
+RewriteCond %{REQUEST_URI} !^/bootstrap.php
+RewriteRule ^(.*)$ bootstrap.php [QSA,L]

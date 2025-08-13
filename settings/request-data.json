@@ -1,0 +1,11 @@
+{
+    "\/": {
+        "url": "\/",
+        "fileName": "index",
+        "isCacheable": true,
+        "cacheTtl": 0,
+        "includedFiles": [
+            "C:\\xampp\\htdocs\\projects\\package-creations\\create-prisma-php-app-dev\\create-prisma-php-app-test\\pos\\src\\app\\index.php"
+        ]
+    }
+}

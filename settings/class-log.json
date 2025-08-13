@@ -1,0 +1,8 @@
+{
+  "Lib\\PHPX\\Fragment": {
+    "filePath": "Lib\\PHPX\\Fragment.php"
+  },
+  "Lib\\PHPX\\PHPX": {
+    "filePath": "Lib\\PHPX\\PHPX.php"
+  }
+}
